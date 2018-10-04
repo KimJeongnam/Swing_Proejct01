@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class SubForm extends JFrame {
@@ -18,6 +19,7 @@ public class SubForm extends JFrame {
 	private static final long serialVersionUID = 2L;
 
 	private JPanel panel = null;
+	private JLabel label = null;
 	private Map<String, Integer> map=null;
 	
 	public SubForm() {
@@ -33,6 +35,11 @@ public class SubForm extends JFrame {
 			menu_list.add(str);
 		}
 		
+		if(menu_list.isEmpty()) {
+			label = new JLabel("None Menu");
+			panel.add(label);
+		}
+		
 		java.util.Collections.sort(menu_list);
 		
 		for(String str: menu_list) {
@@ -43,7 +50,8 @@ public class SubForm extends JFrame {
 		
 		this.add(panel);
 
-		this.setSize(300, 200);
+		this.setLocation(750, 350);
+		this.pack();
 		this.setVisible(true);
 		this.addWindowListener(new WindowAdapter() {
 			@Override

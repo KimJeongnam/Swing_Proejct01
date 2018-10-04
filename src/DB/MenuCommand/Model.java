@@ -20,6 +20,7 @@ public class Model {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+	public void setList(ArrayList<HashMap<String, String>> list) { this.list = list; }
 	public ArrayList<HashMap<String, String>> getList(){ return list; }
 	public static String getError() {
 		return "Data type Error set Data Type : "+Model.class.toString();

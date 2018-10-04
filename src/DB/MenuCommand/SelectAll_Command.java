@@ -25,6 +25,10 @@ public class SelectAll_Command implements Crud_Command {
 		Model data = (Model) obj;
 		ArrayList<HashMap<String, String>> list = data.getList();
 
+		if(list== null) {
+			System.err.println("Please Set Model.setList()");
+			return;
+		}
 		if (!list.isEmpty())
 			list.clear();
 

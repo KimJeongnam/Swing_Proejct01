@@ -15,6 +15,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import Tables.MenuTableNotifyMachine;
+import Tables.MenuTablePanel;
+
 public class Win_Program extends JFrame {
 	/**
 	 * 
@@ -27,15 +30,18 @@ public class Win_Program extends JFrame {
 	private static Map<String, Integer> menus = new HashMap<String, Integer>();
 	private static JLabel label;
 	private static final long serialVersionUID = 1L;
-
+	
+	private MenuTablePanel tablePanel;
 	public Win_Program() {
 		super("자바 window form");
+		
 		mainFrame = this;
 		JLabel menu_label;
 		JLabel price_label;
 		JButton insert_btn;
 		JButton newframe_btn;
 		JButton remove_btn;
+		MenuTableNotifyMachine machine = new MenuTableNotifyMachine();
 		BoxLayout boxlayout = new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS);
 		/*
 		 * BoxLayout boxlayoutx = new BoxLayout(this.getContentPane(),
@@ -55,7 +61,7 @@ public class Win_Program extends JFrame {
 		ActionListener l = ae -> {
 			insertButtonAction();
 		};
-
+		
 		insert_btn.addActionListener(l);
 		remove_btn.addActionListener(new myListener());
 
@@ -70,6 +76,29 @@ public class Win_Program extends JFrame {
 		panel.add(insert_btn);
 		panel.add(remove_btn);
 		this.add(panel);
+		
+		tablePanel = new MenuTablePanel(tf_menu, tf_price, machine.getList());
+		machine.add(tablePanel);
+		this.add(tablePanel);
+		/*table.setFillsViewportHeight(false);
+		JScrollPane scrollPane = new JScrollPane(table);
+		
+		TableColumn column = null;
+		for (int i = 0; i < 5; i++) {
+		    column = table.getColumnModel().getColumn(i);
+		    if (i == 2) {
+		        column.setPreferredWidth(100); //third column is bigger
+		    } else {
+		        column.setPreferredWidth(50);
+		    }
+		}
+		
+		panel = new JPanel();
+		panel.add(scrollPane);
+		
+		panel.add(table.getTableHeader(), BorderLayout.PAGE_START);
+		panel.add(table);
+		this.add(panel);*/
 
 		newframe_btn = new JButton("Order");
 
@@ -79,8 +108,9 @@ public class Win_Program extends JFrame {
 		panel.add(newframe_btn);
 
 		this.add(panel);
-
-		this.setSize(500, 200);
+		
+		this.setLocation(700,300);
+		this.pack();
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
@@ -168,6 +198,6 @@ public class Win_Program extends JFrame {
 		map.put("짜장면", 5000);
 
 		System.out.println(map.get("짬뽕"));
-
+		
 	}
 }
