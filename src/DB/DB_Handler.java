@@ -1,5 +1,7 @@
 package DB;
 
+import java.sql.SQLException;
+
 public class DB_Handler{
 
 	Crud_Command command;
@@ -7,6 +9,10 @@ public class DB_Handler{
 	public Crud_Command getCommand() { return this.command; }
 	
 	public void execute(Object obj) {
+		try {
 		command.execute(obj);
+		}catch(SQLException e) {
+			mysqldb.printSQLError(e);
+		}
 	}
 }

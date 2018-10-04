@@ -39,7 +39,7 @@ public class mysqldb {
 	public Connection getConnection() { return con; }
 	
 	
-	public Statement getStatement() { 
+	public Statement getStatement(){ 
 		try {
 			return con.createStatement();
 		}catch(SQLException e) {
