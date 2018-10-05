@@ -1,4 +1,4 @@
-package test;
+package Form;
 
 import java.awt.FlowLayout;
 import java.awt.event.WindowAdapter;
@@ -10,6 +10,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import CustomListener.menuButtonListener;
 
 public class SubForm extends JFrame {
 
@@ -25,7 +27,7 @@ public class SubForm extends JFrame {
 	public SubForm() {
 		super("Sub Form");
 		
-		map = Win_Program.getMenus();
+		map = null;
 		
 		panel = new JPanel(new FlowLayout());
 		

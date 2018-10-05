@@ -1,11 +1,11 @@
-package test;
+package Form;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import DB.DB_Handler;
+import DB.Model;
 import DB.MenuCommand.Delete_Command;
 import DB.MenuCommand.Insert_Command;
-import DB.MenuCommand.Model;
 import DB.MenuCommand.SelectAll_Command;
 
 public class DBTestMain {

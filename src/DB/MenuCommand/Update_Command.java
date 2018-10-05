@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import DB.Crud_Command;
+import DB.Model;
 
 public class Update_Command implements Crud_Command{
 	PreparedStatement stmt;

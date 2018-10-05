@@ -9,35 +9,23 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import DB.DB_Handler;
-import DB.MenuCommand.Model;
+import DB.Model;
 import DB.MenuCommand.SelectAll_Command;
 
 public class MenuTablePanel extends JPanel implements Observer{
 	/**
-	 * 
+	 *  옵저버 기능이있는 패널
 	 */
 	private static final long serialVersionUID = 1L;
 	
 	private JTable table = null;
-	private JTextField tf_menu = null;
-	private JTextField tf_price = null;
 	private MenuTableModel tableModel = null;
+	private ArrayList<HashMap<String, String>> menu_list;
 	
-	public MenuTablePanel(JTextField tf_menu, JTextField tf_price, ArrayList<HashMap<String, String>> menu_list){
-		this.tf_menu = tf_menu;
-		this.tf_price = tf_price;
+	public MenuTablePanel(ArrayList<HashMap<String, String>> menu_list){
+		this.menu_list = menu_list;
 		
-		DB_Handler handler = new DB_Handler();
-		handler.setCommand(new SelectAll_Command());
-		
-		Model model = new Model();
-		model.setList(menu_list);
-		handler.execute(model);
-		
-		if(model.getList().isEmpty())
-			return;
-		
-		tableModel = new MenuTableModel(model.getList());
+		tableModel = new MenuTableModel(menu_list);
 		table = new JTable(tableModel);
 		table.setFillsViewportHeight(false);
 		
@@ -48,7 +36,11 @@ public class MenuTablePanel extends JPanel implements Observer{
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-		tableModel.fireTableDataChanged();
+		for(HashMap<String, String> map : menu_list) {
+			System.out.println(map);
+		}
+		tableModel= new MenuTableModel(menu_list);
+		table.setModel(tableModel);
 	}
 	
 	public MenuTableModel getTableModel() { return this.tableModel; }

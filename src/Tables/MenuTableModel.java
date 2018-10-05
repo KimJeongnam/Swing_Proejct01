@@ -6,12 +6,14 @@ import java.util.Map;
 
 import javax.swing.table.AbstractTableModel;
 
+import DB.Money;
+
 public class MenuTableModel extends AbstractTableModel{
 	/**
-	 * 
+	 * 커스텀 테이블 모델
 	 */
 	private static final long serialVersionUID = 1L;
-	private String[] columnNames  = {"메뉴 이름 ", "가격"};
+	private String[] columnNames  = {"메뉴 이름 ", "가격(원)"};
 	private Object[][] datas;
 	
 	public MenuTableModel(ArrayList<HashMap<String, String>> list) {
@@ -20,7 +22,7 @@ public class MenuTableModel extends AbstractTableModel{
 		datas = new Object[list.size()][2];
 		for(Map<String, String> data: list) {
 			this.datas[cnt][0] = data.get("menu_name"); 
-			this.datas[cnt][1] = data.get("price");
+			this.datas[cnt][1] = Money.moneyToString(Integer.parseInt(data.get("price")));
 			cnt++;
 		}
 	}
@@ -30,7 +32,11 @@ public class MenuTableModel extends AbstractTableModel{
 		// TODO Auto-generated method stub
 		return columnNames.length;
 	}
-
+	
+	public String getColumnName(int col) {
+	      return columnNames[col];
+	    }
+	
 	@Override
 	public int getRowCount() {
 		// TODO Auto-generated method stub

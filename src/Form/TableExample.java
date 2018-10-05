@@ -1,4 +1,4 @@
-package test;
+package Form;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;

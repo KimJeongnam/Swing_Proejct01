@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import DB.Crud_Command;
+import DB.Model;
 import DB.mysqldb;
 
 public class Insert_Command implements Crud_Command {

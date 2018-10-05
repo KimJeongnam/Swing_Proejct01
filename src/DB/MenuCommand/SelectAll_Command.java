@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import DB.Crud_Command;
+import DB.Model;
 import DB.mysqldb;
 
 public class SelectAll_Command implements Crud_Command {
